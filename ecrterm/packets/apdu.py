@@ -225,12 +225,14 @@ class APDUPacket(object):
         pos += 1 # we move one byte further in all cases.
         # now we should read our data ahead to length.
         # look ahead if we have enough data.
+        #print("apdu 228 blob = {}, pos = {}".format(blob,pos))
         if len(blob) >= pos + l:
             data = blob[pos:pos + l]
         else:
             raise self.NotEnoughData("Not enough Data to create the packet data.")
+        #print("apdu 232 blob = {}, pos = {}".format(blob,pos))
         # step 1: fixed arguments.
-        ## if this packet has some fixed arguments, they have to be
+        # if this packet has some fixed arguments, they have to be
         ## parsed first.
         data = self.consume_fixed(data, l)
         # step 2: bitmaps.

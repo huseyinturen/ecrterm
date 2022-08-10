@@ -159,6 +159,7 @@ class SerialTransport(common.Transport):
         crc = None
         header = self.connection.read(2)
         header = conv.bs2hl(header)
+        #print("transport_serial s162 header = ",header)
         # test if there was a transmission:
         if header == []:
             raise common.TransportLayerException('Reading Header Timeout')
@@ -206,6 +207,7 @@ class SerialTransport(common.Transport):
         try:
             crc, apdu = self.read(timeout)
             msg = SerialMessage(apdu)
+            print("read message =>",msg)
         except Exception as e:
             # this is a NAK - re-raise for further investigation.
             self.write_nak()
@@ -242,6 +244,7 @@ class SerialTransport(common.Transport):
             yourself.
         """
         if message:
+            print("send message =>",message)
             self.write(message.as_bin())
             # time.sleep(0.1)
             acknowledge = self.connection.read(1)

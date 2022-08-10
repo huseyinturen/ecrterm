@@ -254,6 +254,7 @@ class ECR(object):
         pkg = Authorisation(
                     amount=amount_cent, # in cents.
                     currency_code=978, #euro, only one that works, can be skipped.
+                    payment_type = 44,
                     )
         code = self.transmit(pkg)
 

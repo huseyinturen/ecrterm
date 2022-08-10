@@ -20,7 +20,7 @@ class Transmission(object):
         to send its data. 
         The default Transport to use is the serial transport.
     """
-    actual_timeout = TIMEOUT_T4_DEFAULT
+    actual_timeout = TIMEOUT_T2
     last = None
 
     def __init__(self, transport):

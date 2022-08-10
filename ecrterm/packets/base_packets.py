@@ -428,6 +428,7 @@ class IntermediateStatusInformation(Packet):
         return data
 
     def __repr__(self):
+        print(self.fixed_values)
         return "IntermediateStatus{04 FF}: %s" % (
                 common.INTERMEDIATE_STATUS_CODES.get(self.fixed_values.get('intermediate_status', None), 'No status'),)
 Packets.register(IntermediateStatusInformation)
